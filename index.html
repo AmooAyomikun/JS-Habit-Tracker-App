@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker App</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <h1>Habit Tracker</h1>
+        <button id="open-modal-btn" class="primary-btn">+ Add Habit</button>
+    </header>
+
+    <!-- SUMMARY -->
+    <section class="summary">
+        <div class="summary-card">
+            <p>Total Habits</p>
+            <h2 id="total-habits">0</h2>
+        </div>
+
+        <div class="summary-card">
+            <p>Today's Progress</p>
+            <h2 id="today-progress">0%</h2>
+        </div>
+
+        <div class="streak-box stats">
+            <h3>Streaks</h3>
+            <p><i class="fas fa-fire"></i> Current: <span id="current-streak">0</span></p>
+            <p><i class="fa-solid fa-trophy"></i> Best: <span id="best-streak">0</span></p>
+        </div>
+    </section>
+
+    <!-- MAIN -->
+    <main class="container">
+        <section>
+            <h2 class="section-title">Pending Today</h2>
+            <div id="pending-habits" class="habits-grid">
+                 <!-- EMPTY STATE  -->
+                <p class="empty-state">No pending habits.</p>
+                <div class="habit-card">
+                    <div class="habit-top">
+                        <h3 class="habit-name">Workout</h3>
+                        <input type="checkbox" class="complete-checkbox">
+                    </div>
+
+                    <p class="habit-category">Health</p>
+                    <p class="habit-goal">Daily</p>
+
+                    <div class="habit-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%;"></div>
+                        </div>
+                        <span class="progress-text">40%</span>
+                    </div>
+
+                    <p class="streak">🔥 <span class="streak-count">5</span> day streak</p>
+
+                    <div class="habit-actions">
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </div>
+                </div> 
+            </div>    
+        </section>
+
+        <!-- COMPLETED -->
+        <section>
+            <h2 class="section-title completed">Completed Today</h2>
+            <div id="completed-habits" class="habits-grid">
+                <!-- EMPTY STATE -->
+                <p class="empty-state">No completed habits yet.</p>
+
+                <div class="habit-card completed">
+                    <div class="habit-top">
+                        <h3 class="habit-name">Read Book</h3>
+                        <input type="checkbox" class="complete-checkbox" checked>
+                    </div>
+
+                    <p class="habit-category">Study</p>
+
+                    <div class="habit-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <span class="progress-text">100%</span>
+                    </div>
+
+                    <p class="streak">🔥 <span class="streak-count">10</span> day streak</p>
+
+                    <div class="habit-actions">
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Add New Habit</h2>
+            <form id="habit-form" class="form">
+                <div class="form">
+                    <label for="habit-name">Habit Name</label>
+                    <input type="text" id="habit-name" placeholder="e.g., Exercise for 30 minutes">
+                    <small id="habitName-error">Habit with this name already exists</small>
+                </div>
+                
+                <div class="form">
+                    <label for="habit-category">Category</label>
+                    <select id="habit-category">
+                        <option value="">Select category</option>
+                    </select>
+                    <small id="habitCategory-error">Select a category</small>
+                </div>
+
+                <div class="form">
+                    <label for="goal">How often?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="daily" name="goal-type" value="daily" checked>
+                        <label for="daily">Daily</label>
+                        
+                        <input type="radio" id="weekly" name="goal-type" value="weekly">
+                        <label for="weekly">Weekly</label>
+                    </div>
+
+                    <div id="weekly-frequency" style="display: none;">
+                        <label for="frequency">Times per week</label>
+                        <select id="frequency">
+                            <option value="">Select</option>
+                            <option value="2">2x per week</option>
+                            <option value="3">3x per week</option>
+                            <option value="4">4x per week</option>
+                            <option value="5">5x per week</option>
+                        </select>
+                    </div>
+
+                    <small id="habitGoal-error">Select your habit goal</small>
+                </div>
+
+                <button type="submit" id="submit-btn" class="primary-btn">Add Habit</button>
+                <button type="button" id="close-modal-btn" class="primary-btn">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
