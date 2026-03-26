@@ -20,6 +20,7 @@ It’s perfect for students, professionals, and anyone looking to build meaningf
 
 You can view a live demo of the project on GitHub Pages (if hosted):
 
+https://amooayomikun.github.io/JS-Habit-Tracker-App/
 
 **Features of the App**
 
